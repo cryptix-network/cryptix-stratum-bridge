@@ -1,0 +1,16 @@
+services:
+  cytx_bridge:
+    build:
+      context: .
+      no_cache: true
+    container_name: cytx_bridge
+    restart: unless-stopped
+    user: "0"
+    command:
+      - '-stats=false'
+      - '-cryptix=host.docker.internal:19201'
+    ports:
+      - 5555:5555
+      - 2114:2114
+    extra_hosts:
+      - host.docker.internal:host-gateway
